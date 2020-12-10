@@ -1,17 +1,17 @@
 <template>
 <div>
     <v-row>
-        <v-col cols="4" class="mx-auto">
+        <v-col cols="12" sm="4" class="mx-auto">
             <div class="card">
                 <div class="card-body">
                     <v-skeleton-loader type="card" v-if="progress"></v-skeleton-loader>
                     <div v-else class="card virtual-card" :class="color_class">
                         <div class="card-body">
                             <v-row>
-                                <v-col cols="12" sm="8" class="text-white font-weight-bold">
+                                <v-col cols="8" sm="8" class="text-white font-weight-bold">
                                     {{card.currency+" "+card.amount}}
                                 </v-col>
-                                <v-col cols="12" sm="4">
+                                <v-col cols="4" sm="4">
                                    <v-img
                                     :src="logo"
                                     height="45"
@@ -26,11 +26,11 @@
                             </v-row>
 
                             <v-row>
-                                <v-col cols="12" sm="8" class="text-white font-weight-bold">
+                                <v-col cols="8" sm="8" class="text-white font-weight-bold">
                                     {{card.billing_name}}
                                 </v-col>
 
-                                <v-col cols="12" sm="4" class="text-white text-right font-weight-bold">
+                                <v-col cols="4" sm="4" class="text-white text-right font-weight-bold">
                                     {{card.expiry_date}}<br>
                                     <small>Expires</small>
                                 </v-col>
@@ -46,6 +46,13 @@
                             <v-list>
                                 <v-list-item>
                                     <v-list-item-content>
+                                        <v-list-item-title><strong class="text-success">{{card.cvv}}</strong></v-list-item-title>
+                                        <v-list-item-subtitle class="text-success">CVV</v-list-item-subtitle>
+                                    </v-list-item-content>
+                                </v-list-item>
+
+                                <v-list-item>
+                                    <v-list-item-content>
                                         <v-list-item-title><strong>{{card.recipientname}}</strong></v-list-item-title>
                                     <v-list-item-subtitle>For</v-list-item-subtitle>
                                     </v-list-item-content>
@@ -58,12 +65,7 @@
                                     </v-list-item-content>
                                 </v-list-item>
 
-                                <v-list-item>
-                                    <v-list-item-content>
-                                        <v-list-item-title><strong>{{card.cvv}}</strong></v-list-item-title>
-                                    <v-list-item-subtitle>CVV</v-list-item-subtitle>
-                                    </v-list-item-content>
-                                </v-list-item>
+
 
                                 <v-list-item>
                                     <v-list-item-content>

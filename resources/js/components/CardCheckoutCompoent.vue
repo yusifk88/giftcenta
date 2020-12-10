@@ -12,10 +12,10 @@
                             <div v-else class="card virtual-card" :class="color_class">
                                 <div class="card-body">
                                     <v-row>
-                                        <v-col cols="12" sm="8" class="text-white">
+                                        <v-col cols="8" sm="8" class="text-white">
                                             {{card.currency+" "+card.amount}}
                                         </v-col>
-                                        <v-col cols="12" sm="4">
+                                        <v-col cols="4" sm="4">
                                             <v-carousel @change="change_color()" height="45" vertical cycle :show-arrows="false" :hide-delimiters=true>
                                                 <v-carousel-item
                                                     v-for="(item,i) in logos"
@@ -33,11 +33,11 @@
                                     </v-row>
 
                                     <v-row>
-                                        <v-col cols="12" sm="8" class="text-white">
+                                        <v-col cols="8" sm="8" class="text-white">
                                             {{card.billing_name}}
                                         </v-col>
 
-                                        <v-col cols="12" sm="4" class="text-white text-right">
+                                        <v-col cols="4" sm="4" class="text-white text-right">
                                             ##/##<br>
                                             <small>Expires</small>
                                         </v-col>
@@ -51,7 +51,7 @@
 
                            <v-skeleton-loader v-if="progress" type="listitem@7"></v-skeleton-loader>
                           <div v-else>
-                           <h2 class="font-weight-black">Your gift card for {{card.recipientname}} is ready.</h2>
+                           <h2 class="font-weight-thin">Your gift card for {{card.recipientname}} is ready.</h2>
                            <center>
 
                             <strong>Amount:</strong> {{card.currency}}{{card.amount}}<br>

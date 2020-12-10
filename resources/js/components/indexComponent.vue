@@ -20,7 +20,7 @@
                             </v-carousel>
                         </v-col>
                         <v-col tile cols="12"  sm="6" class="text-center">
-                            <h2 class="font-weight-light white--text" style="margin-top:100px;">BUY & SEND A VIRTUAL CARD AS A GIFT</h2>
+                            <h2 v-if="$vuetify.breakpoint.mdAndUp" class="font-weight-light white--text" style="margin-top:100px;">BUY & SEND A VIRTUAL CARD AS A GIFT</h2>
                             <br/>
                             <v-btn to="/buycard" dark block color="purple" rounded>buy virtual card</v-btn>
                         </v-col>

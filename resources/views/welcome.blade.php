@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Buy Cards - GiftCenta</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet">
@@ -12,7 +12,7 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
         <link href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons' rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
-        <link rel="shortcut icon" href="img/icon.png">
+        <link rel="shortcut icon" href="/img/logo.png">
         <link href="/css/atlantis.min.css" rel="stylesheet" >
         <style rel="stylesheet">
             [v-cloak] {
@@ -71,7 +71,7 @@
                 <v-app-bar app flat>
                     <v-toolbar-title class="font-weight-black purple--text"><v-btn text color="purple" to="/">GiftCenta</v-btn></v-toolbar-title>
                     <v-spacer></v-spacer>
-                    <v-btn text class="purple--text">Explore our gift shop <v-icon>mdi-cart</v-icon></v-btn>
+                    <v-btn href="https://giftcenta.com" text class="purple--text">Explore our gift shop <v-icon>mdi-cart</v-icon></v-btn>
                 </v-app-bar>
 
 
@@ -87,7 +87,7 @@
                         class="text-center"
                         cols="12"
                     >
-                        @{{ new Date().getFullYear() }} — <strong>GiftCenta</strong> Powered By <strong>Built</strong>
+                        @{{ new Date().getFullYear() }} — <a href="https://giftcenta.com"><strong>GiftCenta</strong></a> Powered By <a href="https://builtaccounting.com"><strong>Built</strong></a>
                     </v-col>
                 </v-footer>
             </v-app>

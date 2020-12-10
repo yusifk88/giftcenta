@@ -2615,6 +2615,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "previewcardComponent",
   data: function data() {
@@ -39230,7 +39232,7 @@ var render = function() {
                                                 "v-col",
                                                 {
                                                   staticClass: "text-white",
-                                                  attrs: { cols: "12", sm: "8" }
+                                                  attrs: { cols: "8", sm: "8" }
                                                 },
                                                 [
                                                   _vm._v(
@@ -39248,7 +39250,7 @@ var render = function() {
                                               _c(
                                                 "v-col",
                                                 {
-                                                  attrs: { cols: "12", sm: "4" }
+                                                  attrs: { cols: "4", sm: "4" }
                                                 },
                                                 [
                                                   _c(
@@ -39331,7 +39333,7 @@ var render = function() {
                                                 "v-col",
                                                 {
                                                   staticClass: "text-white",
-                                                  attrs: { cols: "12", sm: "8" }
+                                                  attrs: { cols: "8", sm: "8" }
                                                 },
                                                 [
                                                   _vm._v(
@@ -39349,7 +39351,7 @@ var render = function() {
                                                 {
                                                   staticClass:
                                                     "text-white text-right",
-                                                  attrs: { cols: "12", sm: "4" }
+                                                  attrs: { cols: "4", sm: "4" }
                                                 },
                                                 [
                                                   _vm._v(
@@ -39391,7 +39393,7 @@ var render = function() {
                                     [
                                       _c(
                                         "h2",
-                                        { staticClass: "font-weight-black" },
+                                        { staticClass: "font-weight-thin" },
                                         [
                                           _vm._v(
                                             "Your gift card for " +
@@ -39957,14 +39959,16 @@ var render = function() {
                   attrs: { tile: "", cols: "12", sm: "6" }
                 },
                 [
-                  _c(
-                    "h2",
-                    {
-                      staticClass: "font-weight-light white--text",
-                      staticStyle: { "margin-top": "100px" }
-                    },
-                    [_vm._v("BUY & SEND A VIRTUAL CARD AS A GIFT")]
-                  ),
+                  _vm.$vuetify.breakpoint.mdAndUp
+                    ? _c(
+                        "h2",
+                        {
+                          staticClass: "font-weight-light white--text",
+                          staticStyle: { "margin-top": "100px" }
+                        },
+                        [_vm._v("BUY & SEND A VIRTUAL CARD AS A GIFT")]
+                      )
+                    : _vm._e(),
                   _vm._v(" "),
                   _c("br"),
                   _vm._v(" "),
@@ -40048,271 +40052,281 @@ var render = function() {
       _c(
         "v-row",
         [
-          _c("v-col", { staticClass: "mx-auto", attrs: { cols: "4" } }, [
-            _c("div", { staticClass: "card" }, [
-              _c(
-                "div",
-                { staticClass: "card-body" },
-                [
-                  _vm.progress
-                    ? _c("v-skeleton-loader", { attrs: { type: "card" } })
-                    : _c(
-                        "div",
-                        {
-                          staticClass: "card virtual-card",
-                          class: _vm.color_class
-                        },
-                        [
-                          _c(
-                            "div",
-                            { staticClass: "card-body" },
-                            [
-                              _c(
-                                "v-row",
-                                [
-                                  _c(
-                                    "v-col",
-                                    {
-                                      staticClass:
-                                        "text-white font-weight-bold",
-                                      attrs: { cols: "12", sm: "8" }
-                                    },
-                                    [
-                                      _vm._v(
-                                        "\n                                    " +
-                                          _vm._s(
-                                            _vm.card.currency +
-                                              " " +
-                                              _vm.card.amount
-                                          ) +
-                                          "\n                                "
-                                      )
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "v-col",
-                                    { attrs: { cols: "12", sm: "4" } },
-                                    [
-                                      _c("v-img", {
-                                        attrs: { src: _vm.logo, height: "45" }
-                                      })
-                                    ],
-                                    1
-                                  )
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "v-row",
-                                [
-                                  _c(
-                                    "v-col",
-                                    {
-                                      staticClass: "text-center  text-white",
-                                      attrs: { cols: "12", sm: "12" }
-                                    },
-                                    [
-                                      _c(
-                                        "h1",
-                                        { staticClass: "font-weight-bold" },
-                                        [_vm._v(_vm._s(_vm.card_number))]
-                                      )
-                                    ]
-                                  )
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "v-row",
-                                [
-                                  _c(
-                                    "v-col",
-                                    {
-                                      staticClass:
-                                        "text-white font-weight-bold",
-                                      attrs: { cols: "12", sm: "8" }
-                                    },
-                                    [
-                                      _vm._v(
-                                        "\n                                    " +
-                                          _vm._s(_vm.card.billing_name) +
-                                          "\n                                "
-                                      )
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "v-col",
-                                    {
-                                      staticClass:
-                                        "text-white text-right font-weight-bold",
-                                      attrs: { cols: "12", sm: "4" }
-                                    },
-                                    [
-                                      _vm._v(
-                                        "\n                                    " +
-                                          _vm._s(_vm.card.expiry_date)
-                                      ),
-                                      _c("br"),
-                                      _vm._v(" "),
-                                      _c("small", [_vm._v("Expires")])
-                                    ]
-                                  )
-                                ],
-                                1
-                              )
-                            ],
-                            1
-                          )
-                        ]
-                      ),
-                  _vm._v(" "),
-                  _c(
-                    "v-row",
-                    [
-                      _c(
-                        "v-col",
-                        { attrs: { cols: "12", sm: "12" } },
-                        [
-                          _c(
-                            "v-list",
-                            [
-                              _c(
-                                "v-list-item",
-                                [
-                                  _c(
-                                    "v-list-item-content",
-                                    [
-                                      _c("v-list-item-title", [
-                                        _c("strong", [
-                                          _vm._v(_vm._s(_vm.card.recipientname))
-                                        ])
-                                      ]),
-                                      _vm._v(" "),
-                                      _c("v-list-item-subtitle", [
-                                        _vm._v("For")
-                                      ])
-                                    ],
-                                    1
-                                  )
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "v-list-item",
-                                [
-                                  _c(
-                                    "v-list-item-content",
-                                    [
-                                      _c("v-list-item-title", [
-                                        _c("strong", [
-                                          _vm._v(
-                                            _vm._s(_vm.card.recipientemail)
-                                          )
-                                        ])
-                                      ]),
-                                      _vm._v(" "),
-                                      _c("v-list-item-subtitle", [
+          _c(
+            "v-col",
+            { staticClass: "mx-auto", attrs: { cols: "12", sm: "4" } },
+            [
+              _c("div", { staticClass: "card" }, [
+                _c(
+                  "div",
+                  { staticClass: "card-body" },
+                  [
+                    _vm.progress
+                      ? _c("v-skeleton-loader", { attrs: { type: "card" } })
+                      : _c(
+                          "div",
+                          {
+                            staticClass: "card virtual-card",
+                            class: _vm.color_class
+                          },
+                          [
+                            _c(
+                              "div",
+                              { staticClass: "card-body" },
+                              [
+                                _c(
+                                  "v-row",
+                                  [
+                                    _c(
+                                      "v-col",
+                                      {
+                                        staticClass:
+                                          "text-white font-weight-bold",
+                                        attrs: { cols: "8", sm: "8" }
+                                      },
+                                      [
                                         _vm._v(
-                                          _vm._s(_vm.card.recipientname) +
-                                            "'s E-mail address"
-                                        )
-                                      ])
-                                    ],
-                                    1
-                                  )
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "v-list-item",
-                                [
-                                  _c(
-                                    "v-list-item-content",
-                                    [
-                                      _c("v-list-item-title", [
-                                        _c("strong", [
-                                          _vm._v(_vm._s(_vm.card.cvv))
-                                        ])
-                                      ]),
-                                      _vm._v(" "),
-                                      _c("v-list-item-subtitle", [
-                                        _vm._v("CVV")
-                                      ])
-                                    ],
-                                    1
-                                  )
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "v-list-item",
-                                [
-                                  _c(
-                                    "v-list-item-content",
-                                    [
-                                      _c("v-list-item-title", [
-                                        _c("strong", [
-                                          _vm._v(
+                                          "\n                                    " +
                                             _vm._s(
-                                              _vm.card.message
-                                                ? _vm.card.message
-                                                : "No message provided"
+                                              _vm.card.currency +
+                                                " " +
+                                                _vm.card.amount
+                                            ) +
+                                            "\n                                "
+                                        )
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "v-col",
+                                      { attrs: { cols: "4", sm: "4" } },
+                                      [
+                                        _c("v-img", {
+                                          attrs: { src: _vm.logo, height: "45" }
+                                        })
+                                      ],
+                                      1
+                                    )
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "v-row",
+                                  [
+                                    _c(
+                                      "v-col",
+                                      {
+                                        staticClass: "text-center  text-white",
+                                        attrs: { cols: "12", sm: "12" }
+                                      },
+                                      [
+                                        _c(
+                                          "h1",
+                                          { staticClass: "font-weight-bold" },
+                                          [_vm._v(_vm._s(_vm.card_number))]
+                                        )
+                                      ]
+                                    )
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "v-row",
+                                  [
+                                    _c(
+                                      "v-col",
+                                      {
+                                        staticClass:
+                                          "text-white font-weight-bold",
+                                        attrs: { cols: "8", sm: "8" }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                                    " +
+                                            _vm._s(_vm.card.billing_name) +
+                                            "\n                                "
+                                        )
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "v-col",
+                                      {
+                                        staticClass:
+                                          "text-white text-right font-weight-bold",
+                                        attrs: { cols: "4", sm: "4" }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                                    " +
+                                            _vm._s(_vm.card.expiry_date)
+                                        ),
+                                        _c("br"),
+                                        _vm._v(" "),
+                                        _c("small", [_vm._v("Expires")])
+                                      ]
+                                    )
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
+                            )
+                          ]
+                        ),
+                    _vm._v(" "),
+                    _c(
+                      "v-row",
+                      [
+                        _c(
+                          "v-col",
+                          { attrs: { cols: "12", sm: "12" } },
+                          [
+                            _c(
+                              "v-list",
+                              [
+                                _c(
+                                  "v-list-item",
+                                  [
+                                    _c(
+                                      "v-list-item-content",
+                                      [
+                                        _c("v-list-item-title", [
+                                          _c(
+                                            "strong",
+                                            { staticClass: "text-success" },
+                                            [_vm._v(_vm._s(_vm.card.cvv))]
+                                          )
+                                        ]),
+                                        _vm._v(" "),
+                                        _c(
+                                          "v-list-item-subtitle",
+                                          { staticClass: "text-success" },
+                                          [_vm._v("CVV")]
+                                        )
+                                      ],
+                                      1
+                                    )
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "v-list-item",
+                                  [
+                                    _c(
+                                      "v-list-item-content",
+                                      [
+                                        _c("v-list-item-title", [
+                                          _c("strong", [
+                                            _vm._v(
+                                              _vm._s(_vm.card.recipientname)
                                             )
+                                          ])
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("v-list-item-subtitle", [
+                                          _vm._v("For")
+                                        ])
+                                      ],
+                                      1
+                                    )
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "v-list-item",
+                                  [
+                                    _c(
+                                      "v-list-item-content",
+                                      [
+                                        _c("v-list-item-title", [
+                                          _c("strong", [
+                                            _vm._v(
+                                              _vm._s(_vm.card.recipientemail)
+                                            )
+                                          ])
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("v-list-item-subtitle", [
+                                          _vm._v(
+                                            _vm._s(_vm.card.recipientname) +
+                                              "'s E-mail address"
                                           )
                                         ])
-                                      ]),
-                                      _vm._v(" "),
-                                      _c("v-list-item-subtitle", [
-                                        _vm._v("Your Message")
-                                      ])
-                                    ],
-                                    1
-                                  )
-                                ],
-                                1
-                              )
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "v-btn",
-                            {
-                              attrs: {
-                                color: "green",
-                                dark: "",
-                                block: "",
-                                large: ""
-                              }
-                            },
-                            [
-                              _vm._v(
-                                "Send card to " +
-                                  _vm._s(_vm.card.recipientname) +
-                                  " "
-                              ),
-                              _c("v-icon", [_vm._v("mdi-send")])
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  )
-                ],
-                1
-              )
-            ])
-          ])
+                                      ],
+                                      1
+                                    )
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "v-list-item",
+                                  [
+                                    _c(
+                                      "v-list-item-content",
+                                      [
+                                        _c("v-list-item-title", [
+                                          _c("strong", [
+                                            _vm._v(
+                                              _vm._s(
+                                                _vm.card.message
+                                                  ? _vm.card.message
+                                                  : "No message provided"
+                                              )
+                                            )
+                                          ])
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("v-list-item-subtitle", [
+                                          _vm._v("Your Message")
+                                        ])
+                                      ],
+                                      1
+                                    )
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-btn",
+                              {
+                                attrs: {
+                                  color: "green",
+                                  dark: "",
+                                  block: "",
+                                  large: ""
+                                }
+                              },
+                              [
+                                _vm._v(
+                                  "Send card to " +
+                                    _vm._s(_vm.card.recipientname) +
+                                    " "
+                                ),
+                                _c("v-icon", [_vm._v("mdi-send")])
+                              ],
+                              1
+                            )
+                          ],
+                          1
+                        )
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                )
+              ])
+            ]
+          )
         ],
         1
       )
