@@ -181,6 +181,7 @@
         },
         methods:{
             create_card(){
+                if (this.$refs.card_form.validate()){
                 this.progress = true;
 
                 let formData = new FormData();
@@ -203,6 +204,8 @@
                     })
                 .catch(res=>{})
 
+
+            }
 
             }
         }

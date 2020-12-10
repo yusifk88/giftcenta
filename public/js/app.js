@@ -2399,23 +2399,25 @@ __webpack_require__.r(__webpack_exports__);
     create_card: function create_card() {
       var _this = this;
 
-      this.progress = true;
-      var formData = new FormData();
-      formData.append('billing_name', this.name);
-      formData.append('amount', this.amount);
-      formData.append('currency', 'USD');
-      formData.append('sendername', this.sendername);
-      formData.append('senderemail', this.senderemail);
-      formData.append('message', this.message);
-      formData.append('recipientname', this.recipientname);
-      formData.append('recipientemail', this.recipientemail);
-      axios.post('/api/newcard', formData).then(function (res) {
-        _this.progress = false;
+      if (this.$refs.card_form.validate()) {
+        this.progress = true;
+        var formData = new FormData();
+        formData.append('billing_name', this.name);
+        formData.append('amount', this.amount);
+        formData.append('currency', 'USD');
+        formData.append('sendername', this.sendername);
+        formData.append('senderemail', this.senderemail);
+        formData.append('message', this.message);
+        formData.append('recipientname', this.recipientname);
+        formData.append('recipientemail', this.recipientemail);
+        axios.post('/api/newcard', formData).then(function (res) {
+          _this.progress = false;
 
-        _this.$router.push({
-          path: "/checkoutcard/".concat(res.data.id)
-        });
-      })["catch"](function (res) {});
+          _this.$router.push({
+            path: "/checkoutcard/".concat(res.data.id)
+          });
+        })["catch"](function (res) {});
+      }
     }
   }
 });

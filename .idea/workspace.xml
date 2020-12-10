@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ba105d5e-c838-4bf9-8c5e-085c680c849a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/CardCheckoutCompoent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/CardCheckoutCompoent.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/indexComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/indexComponent.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/previewcardComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/previewcardComponent.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/cardCmponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/cardCmponent.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -219,7 +214,7 @@
       <workItem from="1607284879976" duration="3103000" />
       <workItem from="1607288302888" duration="7960000" />
       <workItem from="1607475255552" duration="5680000" />
-      <workItem from="1607532612765" duration="22213000" />
+      <workItem from="1607532612765" duration="22737000" />
     </task>
     <servers />
   </component>
