@@ -1,10 +1,14 @@
 <template>
 <div>
     <v-row>
-        <v-col cols="12" sm="4" class="mx-auto">
-            <div class="card">
-                <div class="card-body">
+        <v-col cols="12" sm="4" md="6" class="mx-auto">
+
+                    <v-row>
+                        <v-col cols="12" sm="12">
+
+
                     <v-skeleton-loader type="card" v-if="progress"></v-skeleton-loader>
+
                     <div v-else class="card virtual-card" :class="color_class">
                         <div class="card-body">
                             <v-row>
@@ -41,15 +45,16 @@
 
                         </div>
                     </div>
+        </v-col>
+    </v-row>
+                    <div class="card">
+                        <div class="card-body">
                     <v-row>
                         <v-col cols="12" sm="12">
-                            <v-list>
-                                <v-list-item>
-                                    <v-list-item-content>
-                                        <v-list-item-title><strong class="text-success">{{card.cvv}}</strong></v-list-item-title>
-                                        <v-list-item-subtitle class="text-success">CVV</v-list-item-subtitle>
-                                    </v-list-item-content>
-                                </v-list-item>
+
+                            <v-skeleton-loader type="list-item@5" v-if="progress"></v-skeleton-loader>
+
+                            <v-list v-if="card">
 
                                 <v-list-item>
                                     <v-list-item-content>
@@ -77,13 +82,30 @@
                             </v-list>
 
 
-                            <v-btn color="green" dark block large>Send card to {{card.recipientname}} <v-icon>mdi-send</v-icon></v-btn>
+                            <v-btn @click="send" v-if="card" color="green" dark block large>Send card to {{card.recipientname}} <v-icon>mdi-send</v-icon></v-btn>
                         </v-col>
                     </v-row>
                 </div>
             </div>
         </v-col>
     </v-row>
+    <v-dialog width="400" persistent v-model="sent">
+        <v-card>
+            <v-card-title>Card Sent</v-card-title>
+            <v-card-text>
+                <h3>Your virtual card as a gift was sent to {{card.recipientname}}</h3>
+                <p>
+                    Thanks for choosing GIftCenta
+                </p>
+
+                <v-btn color="success" to="/" @click="sent=false" block>Okay</v-btn>
+            </v-card-text>
+        </v-card>
+    </v-dialog>
+
+    <v-overlay v-if="sending">
+        <v-progress-circular color="purple" size="70" indeterminate></v-progress-circular>
+    </v-overlay>
 
 </div>
 
@@ -98,9 +120,12 @@
             return{
                 card:null,
                 progress:true,
+                sending:false,
+                sent:false
             }
         },
         computed:{
+
           color_class(){
               return this.card.vendor_name === 'visa' ? 'orange_bg' : 'blue_bg';
           },
@@ -109,26 +134,37 @@
             },
             card_number(){
 
-                    let formattedText = this.card.number.split(' ').join('');
+                    let formattedText = this.card.masked_number.split(' ').join('');
                     if (formattedText.length <= 16) {
                         if (formattedText.length > 0) {
                             formattedText = formattedText.match(new RegExp('.{1,4}', 'g')).join(' ');
                         }
-                    } else {
-                        alert("plz stop here")
                     }
                     return formattedText;
 
             }
         },
         methods:{
+            send(){
+                this.sending=true;
+                axios.get('/api/sendcard/'+this.$route.params.id)
+                    .then(res=>{
+                        this.sending=false;
+                        this.sent=true;
+                    })
+                .catch(error=>{
+                });
+
+            },
+
             get_card(){
                 this.progress =true;
                 axios.get(`/api/card/${this.$route.params.id}`)
                     .then(res=>{
-                        this.progress= false;
 
                         this.card = res.data;
+                        this.progress= false;
+
                     })
                     .catch(err=>{
 

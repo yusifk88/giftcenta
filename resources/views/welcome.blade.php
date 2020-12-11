@@ -2,7 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, scale=1">
 
         <title>Buy Cards - GiftCenta</title>
 
@@ -77,17 +77,18 @@
 
                 <div class="upper-curve"></div>
 
+                <v-container>
 
-                    <router-view style="margin-top: -600px"></router-view>
+                    <router-view style="margin-top: -610px"></router-view>
 
+                </v-container>
 
-
-                <v-footer padless absolute>
+                <v-footer padless app>
                     <v-col
                         class="text-center"
                         cols="12"
                     >
-                        @{{ new Date().getFullYear() }} — <a href="https://giftcenta.com"><strong>GiftCenta</strong></a> Powered By <a href="https://builtaccounting.com"><strong>Built</strong></a>
+                        @{{ new Date().getFullYear() }} —<strong>Buycards</strong> Powered By <a href="https://giftcenta.com"><strong>GiftCenta</strong></a>
                     </v-col>
                 </v-footer>
             </v-app>

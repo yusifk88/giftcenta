@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\SaveVirtualRequest;
 use App\VirtualCard;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use phpbrowscap\Browscap;
 use phpbrowscap\Exception;
@@ -96,6 +97,7 @@ class VirtualCardController extends Controller
 
                 $card->created = 1;
                 $card->number = $newcard['data']['card_pan'];
+                $card->masked_number = $newcard['data']['masked_pan'];
                 $card->cvv = $newcard['data']['cvv'];
                 $card->vendor_name = $newcard['data']['card_type'];
                 $card->expiry_date = $newcard['data']['expiration'];
@@ -124,7 +126,7 @@ class VirtualCardController extends Controller
     "amount" => "5.00",
     "currency" => "USD",
     "card_pan" => "4288030064088869",
-    "masked_pan" => "428803*******8869",
+    "masked_pan" => "428803******88869",
     "city" => "San Francisco",
     "state" => "CA",
     "address_1" => "333 Fremont Street",
@@ -145,6 +147,26 @@ class VirtualCardController extends Controller
 
     }
 
+
+
+    public function testmail(){
+
+        $card = VirtualCard::find(1);
+
+        return new \App\Mail\CardSentMail($card);
+
+    }
+
+
+    public function send($id){
+
+        $card = VirtualCard::find(1);
+
+
+        Mail::to($card->recipientemail)->send(new \App\Mail\VirtualCard($card));
+        Mail::to($card->senderemail)->send(new \App\Mail\CardSentMail($card));
+
+    }
 
 
 }

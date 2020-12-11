@@ -16,5 +16,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'BillsController@home');
 
-Route::get('/bills',"BillsController@index");
-Route::get('/buycard/{id}',"VirtualCardController@buycard");
+Route::get('bills',"BillsController@index");
+Route::get('buycard/{id}',"VirtualCardController@buycard");
+
+
+Route::get("testmail","VirtualCardController@testmail");

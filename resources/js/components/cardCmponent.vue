@@ -1,11 +1,9 @@
 <template>
 
 <v-row>
-    <v-col cols="12" sm="8" class="mx-auto">
+    <v-col cols="12" sm="6" class="mx-auto">
         <div class="card">
             <div class="card-body">
-
-
 
                         <v-timeline
                             align-top
@@ -24,21 +22,27 @@
                         <h4 class="purple--text">CARD INFORMATION</h4>
 
                        <v-row dense>
-                         <v-col cols="12" sm="6">
+                         <v-col cols="12" sm="12">
                                <label>Amount <sup class="red--text">*</sup></label>
                                <v-text-field
                                    type="number"
                                    :prefix="currency"
                                    solo
                                    v-model="amount"
-                                   :rules="requiredRules"
+                                   :rules="[rules.required, rules.counter]"
+                                   min="5"
+                                   max="10000"
+                                   @change="check_amount()"
+                                   @keyup="check_amount()"
 
                                ></v-text-field>
+
+                             <small class="text-danger" v-if="amount_error">The amount must be between $5 - $10,000</small>
                            </v-col>
 
 
-                           <v-col cols="12" sm="6">
-                               <label>Name on Card<sup class="red--text">*</sup></label>
+                           <v-col cols="12" sm="12">
+                               <label>Name you want on the card (preferably name of recipient).<sup class="red--text">*</sup></label>
                                <v-text-field
                                    solo
                                    v-model="name"
@@ -67,12 +71,12 @@
 
                                ></v-text-field>
                            </v-col>
-                           <v-col cols="12" sm="6">
+                           <v-col cols="12" sm="12">
                                <label>Your E-Mail Address</label>
                                <v-text-field
                                    solo
                                    v-model="senderemail"
-                                   :rules="requiredRules"
+                                   :rules="[rules.required, rules.email]"
                                    type="email"
 
                                ></v-text-field>
@@ -80,14 +84,14 @@
                            </v-col>
 
 
-                           <v-col cols="12" sm="6">
+                           <v-col cols="12" sm="12">
                                <label>Your Message</label>
                                <v-textarea
                                    solo
                                    v-model="message"
                                    :rules="requiredRules"
                                    auto-grow
-                                   rows="2"
+                                   rows="3"
                                ></v-textarea>
 
                            </v-col>
@@ -114,12 +118,12 @@
 
                                ></v-text-field>
                            </v-col>
-                           <v-col cols="12" sm="6">
+                           <v-col cols="12" sm="12">
                                <label>E-Mail Address</label>
                                <v-text-field
                                    solo
                                    v-model="recipientemail"
-                                   :rules="requiredRules"
+                                   :rules="[rules.required, rules.email]"
                                    type="email"
 
                                ></v-text-field>
@@ -130,7 +134,7 @@
 
                         <v-row dense>
                             <v-col cols="12" sm="2" class="ml-auto">
-                                <v-btn @click="create_card" :loading="progress" rounded x-large  color="purple" dark >Continue <v-icon>mdi-arrow-right</v-icon></v-btn>
+                                <v-btn :disabled="amount_error" @click="create_card" :loading="progress" rounded x-large  color="purple" dark >Continue <v-icon>mdi-arrow-right</v-icon></v-btn>
                             </v-col>
 
                         </v-row>
@@ -156,6 +160,7 @@
                 amount:5.00,
                 currency:'USD',
                 address:'',
+                amount_error:false,
                 city:'',
                 name:'',
                 sendername:'',
@@ -163,6 +168,14 @@
                 message:'',
                 recipientname:'',
                 recipientemail:'',
+                rules: {
+                    required: value => !!value || 'Required.',
+                    counter: value => ((Number(value) >= 5 && Number(value)) <=10000) || 'The amount must be between $5 - $10,000 ',
+                    email: value => {
+                        const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+                        return pattern.test(value) || 'Invalid e-mail.'
+                    }
+                    },
                 currencies:[
                     {
                     text:'Ghana Cedis(GHS)',
@@ -180,6 +193,9 @@
             }
         },
         methods:{
+            check_amount(){
+             return  this.amount_error = !!(this.amount && this.amount < 5);
+            },
             create_card(){
                 if (this.$refs.card_form.validate()){
                 this.progress = true;

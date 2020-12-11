@@ -24,6 +24,7 @@ class CreateVirtualCardTable extends Migration
             $table->string('recipientname');
             $table->string('recipientemail');
             $table->string('number')->nullable();
+            $table->string('masked_number')->nullable();
             $table->string('expiry_date')->nullable();
             $table->string('vendor_name')->nullable();
             $table->string('cvv')->nullable();
