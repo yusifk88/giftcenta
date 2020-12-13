@@ -129,6 +129,29 @@ class BillsController extends Controller
     public function home(){
         return view('welcome');
 
+    }
+
+    public function varify(Request $request){
+
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => $this->base_url."/bill-items/".$request->item_code."/validate?code=".$request->code.'&customer='.$request->customer,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "GET",
+            CURLOPT_HTTPHEADER => array(
+                "Content-Type: application/json",
+                "Authorization: Bearer ".$this->key
+            ),
+        ));
+
+        $response = curl_exec($curl);
+        dd(json_decode($response,true));
 
     }
 }

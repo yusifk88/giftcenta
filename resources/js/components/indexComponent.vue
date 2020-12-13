@@ -8,7 +8,6 @@
                 </v-col>
             </v-row>
 
-
                     <v-row>
                         <v-col cols="12" sm="6">
                             <v-carousel :show-arrows="false" height="500" :hide-delimiters=true>
@@ -27,14 +26,17 @@
                     </v-row>
 
 
-
-
-
             <div class="card">
                 <v-card-text>
 
                     <v-row>
                         <v-col cols="12" sm="12">
+                            <center>
+                               <h1 class="font-weight-thin"> OR PAY UTILITY BILLS FOR THEM
+                                   <br> BECAUSE... WHY NOT
+                               </h1>
+                            </center>
+
                             <BillsComponent :bills="bills"></BillsComponent>
                         </v-col>
                     </v-row>

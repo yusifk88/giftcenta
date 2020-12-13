@@ -1,6 +1,6 @@
 @component('mail::message')
 # Hello {{$card->recipientname}},<br>
-# {{$card->sendername}} have sent you a *${{number_format($card->amount,2)}}* virtual gift card.
+# {{$card->sendername}} has sent you a *${{number_format($card->amount,2)}}* virtual gift card.
 
 
 Card Information

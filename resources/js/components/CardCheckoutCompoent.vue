@@ -15,11 +15,12 @@
                                             {{card.currency+" "+card.amount}}
                                         </v-col>
                                         <v-col cols="4" sm="4">
-                                            <v-carousel @change="change_color()" height="45" vertical cycle :show-arrows="false" :hide-delimiters=true>
+                                            <v-carousel contain @change="change_color()" height="45" vertical cycle :show-arrows="false" :hide-delimiters=true>
                                                 <v-carousel-item
                                                     v-for="(item,i) in logos"
                                                     :key="i"
                                                     :src="item.src"
+                                                    contain
                                                 ></v-carousel-item>
                                             </v-carousel>
                                         </v-col>
@@ -54,7 +55,7 @@
 
                            <v-skeleton-loader v-if="progress" type="listitem@7"></v-skeleton-loader>
                           <div v-else>
-                           <h2 class="font-weight-thin">Your gift card for {{card.recipientname}} is ready.</h2>
+                           <h2 class="font-weight-thin">Your gift card for {{card.billing_name}} is ready.</h2>
                             <strong>Amount:</strong> {{card.currency}}{{card.amount}}<br>
                             <strong>Service Charge:</strong> {{card.currency}}4<br>
                             <strong>Message:</strong> {{card.message}}<br>
@@ -91,10 +92,10 @@
                 card:null,
                 logos: [
                     {
-                        src: '/img/mastercard.png',
+                        src: '/img/logo.png',
                     },
                     {
-                        src: '/img/visa.png',
+                        src: '/img/logo.png',
                     },
 
                 ],
@@ -125,7 +126,6 @@
                                     this.creating_card=false;
                                 });
 
-                        console.log(data)
 
                         return false;
                     },

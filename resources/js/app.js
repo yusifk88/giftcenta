@@ -40,16 +40,20 @@ import cardCmponent from "./components/cardCmponent";
 import CardCheckoutCompoent from "./components/CardCheckoutCompoent";
 import Flutterwave from 'vue-flutterwave';
 import previewcardComponent from "./components/previewcardComponent";
+import paybillComponent from "./components/bills/paybillComponent";
 
 Vue.use(Flutterwave, { publicKey: 'FLWPUBK_TEST-4105a671a4bcb87e63bec80792b076f3-X' });
 
+import CountryFlag from 'vue-country-flag';
 
+Vue.component('country-flag', CountryFlag);
 Vue.use(VueRouter);
 const routes = [
     { path: '/', component: indexComponent },
     { path: '/buycard', component: cardCmponent },
     { path: '/checkoutcard/:id', component: CardCheckoutCompoent },
     { path: '/previewcard/:id', component: previewcardComponent },
+    { path: '/paybill/:id', component: paybillComponent },
 ];
 
 const router = new VueRouter({

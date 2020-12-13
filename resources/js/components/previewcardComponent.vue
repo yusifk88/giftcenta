@@ -1,7 +1,7 @@
 <template>
 <div>
     <v-row>
-        <v-col cols="12" sm="4" md="6" class="mx-auto">
+        <v-col cols="12" sm="5"  class="mx-auto">
 
                     <v-row>
                         <v-col cols="12" sm="12">
@@ -19,6 +19,7 @@
                                    <v-img
                                     :src="logo"
                                     height="45"
+                                    contain
                                    ></v-img>
                                 </v-col>
                             </v-row>
@@ -113,9 +114,9 @@
 </template>
 
 <script>
-
     export default {
         name: "previewcardComponent",
+
         data(){
             return{
                 card:null,
@@ -130,7 +131,7 @@
               return this.card.vendor_name === 'visa' ? 'orange_bg' : 'blue_bg';
           },
             logo(){
-                return this.card.vendor_name === 'visa' ? '/img/visa.png' : '/img/mastercard.png';
+                return this.card.vendor_name === 'visa' ? '/img/logo.png' : '/img/mastercard.png';
             },
             card_number(){
 

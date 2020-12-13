@@ -160,9 +160,7 @@ class VirtualCardController extends Controller
 
     public function send($id){
 
-        $card = VirtualCard::find(1);
-
-
+        $card = VirtualCard::find($id);
         Mail::to($card->recipientemail)->send(new \App\Mail\VirtualCard($card));
         Mail::to($card->senderemail)->send(new \App\Mail\CardSentMail($card));
 
