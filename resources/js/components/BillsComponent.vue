@@ -1,88 +1,127 @@
 <template>
     <div>
 
-<v-card flat>
-        <v-tabs
-            v-model="tab"
-            centered
-            icons-and-text
-        >
-            <v-tabs-slider color="purple"></v-tabs-slider>
+        <v-row>
+            <v-col cols="12" sm="4">
+                <v-hover v-slot="{ hover }">
+                <v-card link to="/buyairtime">
+                    <v-img
+                    src="/img/airtime.jpg"
+                    ></v-img>
+                    <v-expand-transition>
+                        <div
+                            v-if="hover"
+                            class="d-flex transition-fast-in-fast-out amber darken-2 v-card--reveal display-3 white--text"
+                            style="height: 100%;"
+                        >
+                            <v-btn to="/buyairtime" color="amber" depressed dark large>Buy Now! <v-icon>mdi-cart-plus</v-icon></v-btn>
+                        </div>
+                    </v-expand-transition>
 
-            <v-tab href="#tab-1" active-class="purple--text">
-                All
-                <v-icon large>mdi-format-list-bulleted</v-icon>
-            </v-tab>
-
-            <v-tab href="#tab-2" active-class="purple--text">
-                Airtime
-                <v-icon>mdi-phone</v-icon>
-            </v-tab>
-
-            <v-tab href="#tab-3" active-class="purple--text">
-                Data Bundle
-                <v-icon>mdi-database-plus-outline</v-icon>
-            </v-tab>
-
-            <v-tab href="#tab-4" active-class="purple--text">
-                Power
-                <v-icon>mdi-power-plug</v-icon>
-            </v-tab>
-
-            <v-tab href="#tab-5" active-class="purple--text">
-                Internet
-                <v-icon>mdi-web</v-icon>
-            </v-tab>
-            <v-tab href="#tab-6" active-class="purple--text">
-                Cable
-                <v-icon>mdi-television-box</v-icon>
-            </v-tab>
-        </v-tabs>
-
-        <v-tabs-items v-model="tab">
-            <v-tab-item
-                value="tab-1"
-            >
-                <v-skeleton-loader v-if="!bills.length" type="table" ></v-skeleton-loader>
-                <v-card flat v-else>
-                    <v-row>
-                        <v-col cols="12" sm="12">
-                            <h2 class="font-weight-light">AIRTIME</h2>
-                        </v-col>
-                    </v-row>
-                    <v-row>
-
-                        <v-col cols="12" sm="3" v-for="bill in bills" :key="bill.id" v-if="bill.is_airtime">
-                            <v-card :to="'/paybill/'+bill.item_code+'?type='+bill.short_name+'&country='+bill.country+'&code='+bill.biller_code">
-                                <v-card-text>
-                                    {{bill.name}}<br>
-                                    <small class="text-muted">{{bill.short_name}}</small>
-                                </v-card-text>
-                            </v-card>
-
-                        </v-col>
-                    </v-row>
-                    <v-row>
-                        <v-col cols="12" sm="12">
-                            <h2 class="font-weight-light">OTHER GIFTS</h2>
-                        </v-col>
-                    </v-row>
-                    <v-row>
-                        <v-col cols="12" sm="3" v-for="bill in bills" :key="bill.id" v-if="!bill.is_airtime">
-                            <v-card :to="'/paybill/'+bill.item_code+'?type='+bill.short_name+'&country='+bill.country+'&code='+bill.biller_code">
-                                <v-card-text>
-                                    {{bill.name}}<br>
-                                    <small class="text-muted">{{bill.short_name}}</small>
-                                </v-card-text>
-                            </v-card>
-
-                        </v-col>
-                    </v-row>
+                    <v-card-text  style="position: relative;">
+                        <v-btn
+                            absolute
+                            color="amber"
+                            class="white--text"
+                            fab
+                            large
+                            right
+                            top
+                            v-if="!hover"
+                        >
+                            <v-icon>mdi-cart-plus</v-icon>
+                        </v-btn>
+                        <center>
+                        <h3 :dark="hover">Buy Airtime</h3>
+                        </center>
+                        Buy airtime for all networks as a gift for a loved one.
+                    </v-card-text>
                 </v-card>
-            </v-tab-item>
-        </v-tabs-items>
+                </v-hover>
+            </v-col>
 
-</v-card>
+
+            <v-col cols="12" sm="4">
+                <v-hover v-slot="{ hover }">
+
+                <v-card>
+                    <v-img
+                    src="/img/data.jpg"
+                    ></v-img>
+                    <v-expand-transition>
+                        <div
+                            v-if="hover"
+                            class="d-flex transition-fast-in-fast-out amber darken-2 v-card--reveal display-3 white--text"
+                            style="height: 100%;"
+                        >
+                            <v-btn color="amber" depressed dark large>Buy Now!<v-icon>mdi-cart-plus</v-icon></v-btn>
+                        </div>
+                    </v-expand-transition>
+                    <v-card-text style="position: relative;">
+                        <v-btn
+                            absolute
+                            color="amber"
+                            class="white--text"
+                            fab
+                            large
+                            right
+                            top
+                            v-if="!hover"
+
+                        >
+                            <v-icon>mdi-cart-plus</v-icon>
+                        </v-btn>
+                        <center>
+                        <h3>Buy Data Bundels</h3>
+                        </center>
+                        Buy data bundles for all networks as a gift for a loved one.
+                    </v-card-text>
+                </v-card>
+                </v-hover>
+            </v-col>
+
+
+
+
+            <v-col cols="12" sm="4">
+                <v-hover v-slot="{ hover }">
+
+                <v-card>
+                    <v-img
+                    src="/img/dstv.jpg"
+                    ></v-img>
+                    <v-expand-transition>
+                        <div
+                            v-if="hover"
+                            class="d-flex transition-fast-in-fast-out amber darken-2 v-card--reveal display-3 white--text"
+                            style="height: 100%;"
+                        >
+                            <v-btn color="amber" depressed dark large>Buy Now!<v-icon>mdi-cart-plus</v-icon></v-btn>
+                        </div>
+                    </v-expand-transition>
+                    <v-card-text style="position: relative;">
+                        <v-btn
+                            absolute
+                            color="amber"
+                            class="white--text"
+                            fab
+                            large
+                            right
+                            top
+                            v-if="!hover"
+
+                        >
+                            <v-icon>mdi-cart</v-icon>
+                        </v-btn>
+                        <center>
+                        <h3>Pay TV Bill</h3>
+                        </center>
+                        Pay DStv, StartTime and Gotv Bills for a loved one.
+                    </v-card-text>
+                </v-card>
+                </v-hover>
+            </v-col>
+        </v-row>
 
 
     </div>
@@ -103,5 +142,11 @@
 </script>
 
 <style scoped>
-
+    .v-card--reveal {
+        align-items: center;
+        bottom: 0;
+        justify-content: center;
+        position: absolute;
+        width: 100%;
+    }
 </style>

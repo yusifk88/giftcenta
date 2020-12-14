@@ -60,9 +60,6 @@
                 50%{background-position:100% 50%}
                 100%{background-position:0% 50%}
             }
-
-
-
             </style>
     </head>
     <body class="glow">
@@ -78,9 +75,10 @@
                 <div class="upper-curve"></div>
 
                 <v-container>
+                    <v-fade-transition>
 
                     <router-view style="margin-top: -610px"></router-view>
-
+                    </v-fade-transition>
                 </v-container>
 
                 <v-footer padless app>

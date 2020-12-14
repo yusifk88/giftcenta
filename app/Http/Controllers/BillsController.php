@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use PhpParser\Node\Stmt\DeclareDeclare;
 
@@ -35,7 +36,7 @@ class BillsController extends Controller
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-            CURLOPT_URL => $this->base_url."/bill-categories",
+            CURLOPT_URL => $this->base_url."/bill-categories?country=GH",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,
@@ -152,6 +153,37 @@ class BillsController extends Controller
 
         $response = curl_exec($curl);
         dd(json_decode($response,true));
+
+    }
+
+
+    public function buyairtime(Request $request){
+
+        $curl = curl_init();
+        $data = $request->all();
+        $data['reference']=Carbon::now()->timestamp;
+       // dd(json_encode($data));
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => $this->base_url."/bills",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "POST",
+            CURLOPT_POSTFIELDS => json_encode($data),
+
+            CURLOPT_HTTPHEADER => array(
+                "Content-Type: application/json",
+                "Authorization: Bearer ".$this->key
+            ),
+        ));
+
+        $response = curl_exec($curl);
+        dd(json_decode($response,true));
+
 
     }
 }
