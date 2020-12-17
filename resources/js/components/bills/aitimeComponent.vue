@@ -26,7 +26,7 @@
                            <v-text-field
                             label="Recipient Phone number"
                             outlined
-                            placeholder="0200000012"
+                            :placeholder="placeholder"
                             v-model="phone_number"
                             :rules="[rules.required,rules.counter,rules.is_number]"
 
@@ -153,6 +153,23 @@
                     }
                 ]
             }
+        },
+        computed:{
+          placeholder(){
+              if (this.network === 'VODAFONE VTU'){
+                  return '0200000000'
+              }else if (this.network === 'MTN VTU'){
+                  return '0240000000'
+
+              }else if (this.network === 'TIGO VTU'){
+                  return '0270000000'
+
+              }else{
+                  return '0200000000'
+
+              }
+
+          }
         },
         methods:{
 
