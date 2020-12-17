@@ -4,7 +4,7 @@
         <v-col cols="12" sm="6" class="mx-auto">
             <v-card color="success" dark>
                 <v-card-text class="text-center">
-                    <h1 class="font-weight-thin">Your airtime as a gift was sent Airtime.</h1>
+                    <h1 class="font-weight-thin">Your airtime as a gift was sent.</h1>
                     <h5 class="font-weight-thin">
                         We shot you a mail.
                         <br>

@@ -231,12 +231,12 @@ class BillsController extends Controller
                 'paid'=>1
             ]);
 
-            Mail::to($airtime->recipeint_email)->send(new \App\Mail\airtime($airtime));
+            Mail::to($airtime->recipient_email)->send(new \App\Mail\airtime($airtime));
             if ($airtime->sender_email){
             Mail::to($airtime->sender_email)->send(new \App\Mail\airtimesent($airtime));
             }
-
             return redirect()->to('/airtimecomplete/'.$id);
+
         }else{
             return response('Error: '.$results['message'],302);
         }

@@ -23,8 +23,7 @@
                             <br/>
                             <v-btn depressed class="m-2" to="/buycard" dark block color="purple" rounded>buy virtual card</v-btn> <br>
                             <v-btn depressed class="m-2" to="/buyairtime" dark block color="amber" rounded>buy airtime</v-btn><br>
-                            <v-btn depressed class="m-2" to="/buybundel" dark block color="green" rounded>buy data bundles</v-btn><br>
-                            <v-btn depressed class="m-2" to="/buybundel" dark block color="teal" rounded>Pay Dstv Bill</v-btn>
+                            <v-btn depressed class="m-2" to="/buydstv" dark block color="teal" rounded>Pay Dstv Bill</v-btn>
                         </v-col>
                     </v-row>
 

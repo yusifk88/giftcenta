@@ -48,6 +48,7 @@ import CountryFlag from 'vue-country-flag';
 import aitimeComponent from "./components/bills/aitimeComponent";
 import payairtimeComponent from "./components/bills/payairtimeComponent";
 import airtimeCompleteComponent from "./components/bills/airtimeCompleteComponent";
+import DStvComponent from "./components/bills/DStvComponent";
 
 Vue.component('country-flag', CountryFlag);
 Vue.use(VueRouter);
@@ -57,6 +58,7 @@ const routes = [
     { path: '/checkoutcard/:id', component: CardCheckoutCompoent },
     { path: '/previewcard/:id', component: previewcardComponent },
     { path: '/buyairtime', component: aitimeComponent},
+    { path: '/buydstv', component: DStvComponent},
     { path: '/payairtime/:id', component: payairtimeComponent},
     {path:'/airtimecomplete/:id',component: airtimeCompleteComponent}
 ];
