@@ -175,7 +175,6 @@ class BillsController extends Controller
           ]
       );
       $airtime->save();
-      dd($airtime);
 
       if ($airtime){
           return response()->json($airtime);
