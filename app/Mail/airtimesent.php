@@ -29,6 +29,6 @@ class airtimesent extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.airtimesent',['airtime'=>$this->airtime]);
+        return $this->markdown('emails.airtimesent',['airtime'=>$this->airtime])->subject("Airtime Sent");
     }
 }

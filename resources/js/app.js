@@ -42,7 +42,7 @@ import Flutterwave from 'vue-flutterwave';
 import previewcardComponent from "./components/previewcardComponent";
 import paybillComponent from "./components/bills/paybillComponent";
 
-Vue.use(Flutterwave, { publicKey: 'FLWPUBK_TEST-4105a671a4bcb87e63bec80792b076f3-X' });
+Vue.use(Flutterwave, { publicKey: 'FLWPUBK-156ac1734b17652dfd246eaca2ae41cd-X' });
 
 import CountryFlag from 'vue-country-flag';
 import aitimeComponent from "./components/bills/aitimeComponent";

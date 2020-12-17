@@ -208,7 +208,6 @@
 
             save(){
                 if (this.$refs.airtime_form.validate()){
-                    if(this.validate_number()){
                         this.progress=true;
                         let formData = new FormData();
                         formData.append('country',this.country);
@@ -238,7 +237,7 @@
                                 }
                                 this.show_error=true;
                             });
-                    }
+
                 }
             }
 

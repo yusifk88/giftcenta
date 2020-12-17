@@ -1,5 +1,5 @@
 @component('mail::message')
-# {{$airtime->sender_name}} have sent you Airtime.
+# {{$airtime->sender_name}} has sent you Airtime.
 
 You just received GHS{{number_format($airtime->amount,2)}} airtime from {{$airtime->sender_name}}
 

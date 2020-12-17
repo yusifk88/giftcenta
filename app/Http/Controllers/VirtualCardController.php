@@ -92,7 +92,8 @@ class VirtualCardController extends Controller
             $data['billing_postal_code']='94105';
             $data['billing_country']='US';
 
-            $newcard = VirtualCardController::mockCard();
+            $newcard = $this->makeCard($data);
+
             if ($newcard['status']==='success'){
 
                 $card->created = 1;
