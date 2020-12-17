@@ -72,7 +72,7 @@
                             <v-icon>mdi-cart-plus</v-icon>
                         </v-btn>
                         <center>
-                        <h3>Buy Data Bundels</h3>
+                        <h3>Buy Data Bundles</h3>
                         </center>
                         Buy data bundles for all networks as a gift for a loved one.
                     </v-card-text>

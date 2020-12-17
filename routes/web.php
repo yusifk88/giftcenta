@@ -18,6 +18,6 @@ Route::get('/', 'BillsController@home');
 
 Route::get('bills',"BillsController@index");
 Route::get('buycard/{id}',"VirtualCardController@buycard");
+Route::get('sendairtime/{id}',"BillsController@payairtime");
 
-
-Route::get("testmail","VirtualCardController@testmail");
+Route::get('testmail','BillsController@mail');

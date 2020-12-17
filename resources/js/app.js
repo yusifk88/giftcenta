@@ -46,6 +46,8 @@ Vue.use(Flutterwave, { publicKey: 'FLWPUBK_TEST-4105a671a4bcb87e63bec80792b076f3
 
 import CountryFlag from 'vue-country-flag';
 import aitimeComponent from "./components/bills/aitimeComponent";
+import payairtimeComponent from "./components/bills/payairtimeComponent";
+import airtimeCompleteComponent from "./components/bills/airtimeCompleteComponent";
 
 Vue.component('country-flag', CountryFlag);
 Vue.use(VueRouter);
@@ -55,6 +57,8 @@ const routes = [
     { path: '/checkoutcard/:id', component: CardCheckoutCompoent },
     { path: '/previewcard/:id', component: previewcardComponent },
     { path: '/buyairtime', component: aitimeComponent},
+    { path: '/payairtime/:id', component: payairtimeComponent},
+    {path:'/airtimecomplete/:id',component: airtimeCompleteComponent}
 ];
 
 const router = new VueRouter({

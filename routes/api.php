@@ -19,4 +19,5 @@ Route::get('/bills',"BillsController@index");
 Route::post('/newcard','VirtualCardController@store');
 Route::get('/card/{id}','VirtualCardController@show');
 Route::get('sendcard/{id}','VirtualCardController@send');
+Route::get('airtime/{id}','BillsController@show');
 Route::post('buyairtime','BillsController@buyairtime');

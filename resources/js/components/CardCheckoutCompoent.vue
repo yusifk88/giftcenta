@@ -135,7 +135,6 @@
                     }
                 });
 
-               console.log(f);
             },
 
             change_color(){

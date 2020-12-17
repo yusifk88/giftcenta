@@ -9,12 +9,14 @@
                             <h1 class="font-weight-light"><country-flag :country='country' size='big'/> GHANA</h1>
 
                         </center>
+                        <v-form ref="airtime_form">
                         <v-col cols="12" sm="12">
                             <v-select
                             label="Select Network"
                             :items="networks"
                             outlined
                             v-model="network"
+                            :rules="[rules.required]"
                             >
 
                             </v-select>
@@ -26,6 +28,8 @@
                             outlined
                             prefix="+233"
                             v-model="phone_number"
+                            :rules="[rules.required,rules.counter,rules.is_number]"
+
 
                            ></v-text-field>
                         </v-col>
@@ -38,6 +42,7 @@
                             prefix="GHS"
                             v-model="amount"
                             type="number"
+                            :rules="[rules.required]"
 
                            ></v-text-field>
                         </v-col>
@@ -50,6 +55,7 @@
                                 outlined
                                 type="email"
                                 v-model="recipient_email"
+                                :rules="[rules.email]"
 
                             ></v-text-field>
                         </v-col>
@@ -65,6 +71,16 @@
                         </v-col>
 
 
+                            <v-col cols="12" sm="12">
+                            <v-text-field
+                                label="Your Full Name"
+                                outlined
+                                v-model="sender_name"
+
+                            ></v-text-field>
+                        </v-col>
+
+
 
                         <v-col cols="12" sm="12">
                             <v-textarea
@@ -75,11 +91,17 @@
                                 v-model="message"
                             ></v-textarea>
                         </v-col>
+                            <v-alert v-if="show_error" type="error">
+                                <h5>{{error}}</h5>
+                            </v-alert>
                         <v-col cols="12" sm="12">
-                            <v-btn @click="save" color="purple" dark block rounded>
+                            <v-btn :loading="progress" @click="save" color="purple" dark block rounded>
                                 Continue <v-icon>mdi-arrow-right</v-icon>
                             </v-btn>
                         </v-col>
+                        </v-form>
+
+
                     </v-card-text>
                 </v-card>
             </v-col>
@@ -94,6 +116,8 @@
         name: "aitimeComponent",
         data(){
             return{
+                error:'',
+                show_error:false,
                 network:'',
                 amount:0.0,
                 country:'GH',
@@ -101,8 +125,18 @@
                 sender_email:'',
                 message:'',
                 phone_number:'',
+                sender_name:'',
+                rules: {
+                    required: value => !!value || 'Required.',
+                    counter: value => value.length === 10  || 'Invalid phone number',
+                    is_number: value => !isNaN(value)  || 'Invalid characters in phone number',
+                    email: value => {
+                        const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+                        return pattern.test(value) || 'Invalid e-mail.'
+                    }
+                },
 
-                progress:true,
+                progress:false,
                 bills:[],
                 networks:[
                     {
@@ -122,17 +156,37 @@
         },
         methods:{
          save(){
+             if (this.$refs.airtime_form.validate()){
+                 this.progress=true;
              let formData = new FormData();
              formData.append('country',this.country);
              formData.append('biller_name',this.network);
              formData.append('amount',this.amount);
-             formData.append('customer','+233265653314');
-             formData.append('type','AIRTIME');
+             formData.append('customer',this.phone_number);
+             formData.append('type',this.network);
              formData.append('recurrence','ONCE');
+             formData.append('recipient_email',this.recipient_email);
+             formData.append('sender_email',this.sender_email);
+             formData.append('sender_name',this.sender_name);
+             formData.append('message',this.message);
              axios.post('/api/buyairtime',formData)
                     .then(res=>{
-                       console.log(res.data);
-                    });
+
+                        this.progress=false;
+
+                        this.$router.push({
+                            path:'/payairtime/'+res.data.id
+                        });
+                    })
+                .catch(error=>{
+                  if (error.response.status===302){
+                      this.error=error.response.data;
+                  }else {
+                      this.error="Error: Could not process your request.";
+                  }
+                  this.show_error=true;
+                });
+             }
 
          }
 

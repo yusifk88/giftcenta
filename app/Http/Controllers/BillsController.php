@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Airtime;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use PhpParser\Node\Stmt\DeclareDeclare;
 
 class BillsController extends Controller
@@ -90,7 +92,8 @@ class BillsController extends Controller
      */
     public function show($id)
     {
-        //
+        $item = Airtime::find($id);
+        return response()->json($item);
     }
 
     /**
@@ -159,10 +162,49 @@ class BillsController extends Controller
 
     public function buyairtime(Request $request){
 
+      $airtime = new Airtime(
+          [
+              'phone_number'=>$request->customer,
+              'country'=>$request->country,
+              'network'=>$request->type,
+              'amount'=>$request->amount,
+              'recipient_email'=>$request->recipient_email,
+              'sender_email'=>$request->sender_email,
+              'sender_name'=>$request->sender_name,
+              'message'=>$request->message
+          ]
+      );
+      $airtime->save();
+
+      if ($airtime){
+          return response()->json($airtime);
+      }else{
+          return response('Error: Could not create airtime payment',302);
+      }
+
+
+    }
+
+
+
+    public function payairtime($id){
+
         $curl = curl_init();
-        $data = $request->all();
+        //$data = $request->all();
+
+
+            $airtime = Airtime::find($id);
+        if (!$airtime->paid){
+
         $data['reference']=Carbon::now()->timestamp;
-       // dd(json_encode($data));
+        $data['customer']=$airtime->phone_number;
+        $data['country']=$airtime->country;
+        $data['biller_name']=$airtime->network;
+        $data['amount']=$airtime->amount;
+        $data['type']=$airtime->network;
+        $data['recurrence']='ONCE';
+
+
 
         curl_setopt_array($curl, array(
             CURLOPT_URL => $this->base_url."/bills",
@@ -182,8 +224,39 @@ class BillsController extends Controller
         ));
 
         $response = curl_exec($curl);
-        dd(json_decode($response,true));
+        $results = json_decode($response,true);
+
+        if ($results['status'] === 'success'){
+            $airtime->update([
+                'paid'=>1
+            ]);
+
+            Mail::to($airtime->recipeint_email)->send(new \App\Mail\airtime($airtime));
+            if ($airtime->sender_email){
+            Mail::to($airtime->sender_email)->send(new \App\Mail\airtimesent($airtime));
+            }
+
+            return redirect()->to('/airtimecomplete/'.$id);
+        }else{
+            return response('Error: '.$results['message'],302);
+        }
+        }else{
+
+            return redirect()->to('/airtimecomplete/'.$id);
+        }
 
 
     }
+
+
+
+    public function mail(){
+
+        $item = Airtime::find(5);
+
+        return new \App\Mail\airtime($item);
+
+    }
+
+
 }
