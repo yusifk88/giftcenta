@@ -13,7 +13,7 @@
                                 <v-text-field
                                     label="SmartCard Number"
                                     outlined
-                                    :placeholder="placeholder"
+                                    placeholder="0000000000"
                                     v-model="phone_number"
                                     :rules="[rules.required,rules.counter,rules.is_number]"
 
@@ -82,9 +82,13 @@
                                 <h5>{{error}}</h5>
                             </v-alert>
                             <v-col cols="12" sm="12">
-                                <v-btn :loading="progress" @click="save" color="purple" dark block rounded>
-                                    Continue <v-icon>mdi-arrow-right</v-icon>
-                                </v-btn>
+                                <center>
+                                <h4 class="green--text font-weight-thin">Coming soon</h4>
+                                </center>
+
+<!--                                <v-btn :loading="progress" @click="save" color="purple" dark block rounded>-->
+<!--                                    Continue <v-icon>mdi-arrow-right</v-icon>-->
+<!--                                </v-btn>-->
                             </v-col>
                         </v-form>
 
