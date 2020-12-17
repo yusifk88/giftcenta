@@ -26,7 +26,7 @@
                            <v-text-field
                             label="Recipient Phone number"
                             outlined
-                            prefix="+233"
+                            placeholder="0200000012"
                             v-model="phone_number"
                             :rules="[rules.required,rules.counter,rules.is_number]"
 
@@ -155,8 +155,57 @@
             }
         },
         methods:{
+
+            validate_number(){
+
+                if (this.network === 'VODAFONE VTU'){
+                    let posibilities = ['050','020'];
+
+                    let ini_number = this.phone_number.substr(0,3);
+                    if (posibilities.includes(ini_number)){
+                        return true;
+                    }else {
+                            this.show_error =true;
+                            this.error=this.phone_number+" dose not match the network selected.";
+
+                        return false;
+                    }
+                }else if (this.network === 'MTN VTU'){
+
+                    let posibilities = ['055','024','059'];
+
+                    let ini_number = this.phone_number.substr(0,3);
+                    if (posibilities.includes(ini_number)){
+                        return true;
+                    }else {
+                        this.show_error =true;
+                        this.error=this.phone_number+" dose not match the network selected.";
+
+                        return false;
+                    }
+
+
+                }else {
+
+                    let posibilities = ['026','027',];
+
+                    let ini_number = this.phone_number.substr(0,3);
+                    if (posibilities.includes(ini_number)){
+                        return true;
+                    }else {
+                        this.show_error =true;
+                        this.error=this.phone_number+" dose not match the network selected.";
+
+                        return false;
+                    }
+                };
+
+
+            },
+
          save(){
              if (this.$refs.airtime_form.validate()){
+                 if(this.validate_number()){
                  this.progress=true;
              let formData = new FormData();
              formData.append('country',this.country);
@@ -187,7 +236,7 @@
                   this.show_error=true;
                 });
              }
-
+             }
          }
 
         },

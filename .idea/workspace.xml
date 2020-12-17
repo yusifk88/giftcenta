@@ -2,25 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ba105d5e-c838-4bf9-8c5e-085c680c849a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Airtime.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mail/airtime.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mail/airtimesent.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_12_16_211828_create_airtimes_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/bills/airtimeCompleteComponent.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/bills/payairtimeComponent.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/emails/airtime.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/emails/airtimesent.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/2e920d69-8149-49e1-982b-d60770f73331.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/2e920d69-8149-49e1-982b-d60770f73331.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BillsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/BillsController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/BillsComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/BillsComponent.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/CardCheckoutCompoent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/CardCheckoutCompoent.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/bills/aitimeComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/bills/aitimeComponent.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/indexComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/indexComponent.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -236,7 +220,7 @@
       <workItem from="1607836017723" duration="14319000" />
       <workItem from="1607956547102" duration="1147000" />
       <workItem from="1577837238570" duration="233000" />
-      <workItem from="1608133471350" duration="12333000" />
+      <workItem from="1608133471350" duration="13808000" />
     </task>
     <servers />
   </component>
